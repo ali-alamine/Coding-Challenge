@@ -20,7 +20,7 @@ function Header_menu(){
                             <Navbar.Collapse id="responsive-navbar-nav">
                                 <Nav className="mr-auto">
                                     <Link className='nav-link' to="/Home">Home</Link>
-                                    <Link className='nav-link' to="/page2">Page 2</Link>
+                                    <Link className='nav-link' to="/Page2">Page 2</Link>
                                 </Nav>
                             </Navbar.Collapse>
                         </Navbar>
