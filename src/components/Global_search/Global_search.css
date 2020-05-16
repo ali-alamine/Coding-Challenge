@@ -1,0 +1,9 @@
+.global-search .search-content{
+    height: 30px;
+}
+.global-search .search-div{
+    margin-top: 20px;
+}
+.global-search .search-icon:hover{
+    background-color: rgb(192, 192, 192);
+}
