@@ -34,12 +34,13 @@ function Item(props){
                 <Flag code={props.CountryCode}/>
                 <div className={classes.details}>
                     <CardContent className={classes.content}>
-                    <Typography component="h4" variant="h4">
-                      Total: 
-                        {props.totalConfirmed}
+                    <Typography component="h6" variant="h6">
+                      Total Confirmed: 
+                        {props.total_confirmed}
                     </Typography>
                     <Typography variant="subtitle1" color="textSecondary">
-                        Mac Miller
+                      Total Deaths:
+                      {props.total_deaths}
                     </Typography>
                     </CardContent>
                 </div>
