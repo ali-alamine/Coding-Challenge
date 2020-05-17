@@ -1,6 +1,7 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch ,Link} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch ,Link,Redirect} from "react-router-dom";
 import Home from '../Home/Home';
+import Page_2 from '../Page_2/Page_2';
 import './Header_menu.css'
 import Navbar  from 'react-bootstrap/Navbar'
 import Nav  from 'react-bootstrap/Nav'
@@ -24,9 +25,16 @@ function Header_menu(){
                                 </Nav>
                             </Navbar.Collapse>
                         </Navbar>
+
+                        <Route path='/'>
+                            <Redirect to="/Home" />
+                        </Route>
                         <Switch>
                             <Route path="/Home">
                                 <Home />
+                            </Route>
+                            <Route path="/Page2">
+                                <Page_2 />
                             </Route>
                         </Switch>
                     </Router>
