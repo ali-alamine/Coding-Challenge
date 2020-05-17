@@ -61,11 +61,12 @@ const Home = () => {
     const search_by_country_name = (search_query) => {
         if(search_query.query==''){
             get_countries_status_summary();
+        }else{
+            search_query.query = search_query.query.charAt(0).toUpperCase() + search_query.query.slice(1);
+            countries_list.map((el,index )=> {
+                return el.Country==search_query.query? set_countries_list([el]):''
+            });
         }
-
-        countries_list.map((el,index )=> {
-            return el.Country==search_query.query? set_countries_list([el]):''
-        });
     }
 
 

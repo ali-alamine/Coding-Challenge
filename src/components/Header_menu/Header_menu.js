@@ -27,7 +27,7 @@ function Header_menu(){
                         </Navbar>
 
                         <Route path='/'>
-                            <Redirect to="/Page2" />
+                            <Redirect to="/Home" />
                         </Route>
                         <Switch>
                             <Route path="/Home">
