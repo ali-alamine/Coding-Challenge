@@ -6,6 +6,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import Global_search from '../Global_search/Global_search';
 import Item from '../Item/Item';
 import axios from 'axios';
+import ReactSpinner from 'react-bootstrap-spinner'
 import './Home.css'
 function Home(){
 
@@ -21,25 +22,28 @@ function Home(){
                 set_countries_list(request['Countries']);
                 console.log(request['Countries'])
             },error =>{
-                console.log('error')
                 console.log(error)
             }
         );
-        
     }
     return (
-        <div className='home-page'>
-            <Container>
+            <div className='home-page'>
                 <Global_search />
+                <div Style={countries_list.length > 0 ? 'display:none':'display:block'}>
+                    <Row >
+                        <Col></Col>
+                        <Col> <ReactSpinner type="border" color="primary" size="5" /></Col>
+                        <Col></Col>
+                    </Row>
+                </div>
                 {
                     countries_list.map((el,index) => {
                         while(index < 5){
-                            return <Item CountryCode={el.CountryCode} />
+                            return <Item totalConfirmed={el.TotalConfirmed} CountryCode={el.CountryCode} />
                         }
                     })
                 }
-            </Container>
-        </div>
+            </div>
         )
 }
 export default Home;

@@ -10,12 +10,12 @@ import Col from 'react-bootstrap/Col'
 function Header_menu(){
     return (
 
-        <div className='container'>
+        <div className='header-menu'>
             <Container>
                 <div className='header-menu'>
                     <Router>
                         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                            {/* <Navbar.Brand href="#home">Coding Challenge</Navbar.Brand> */}
+                            <Navbar.Brand>Covid-19 Tracker</Navbar.Brand>
                             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                             <Navbar.Collapse id="responsive-navbar-nav">
                                 <Nav className="mr-auto">

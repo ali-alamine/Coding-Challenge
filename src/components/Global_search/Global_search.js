@@ -2,7 +2,7 @@ import React from 'react';
 import SearchIcon from '@material-ui/icons/Search';
 import './Global_search.css'
 
-function Global_search(){
+const Global_search =() => {
     return (
         <div className='global-search'>
             <div className="search-div form-inline justify-content-left md-form form-sm">
