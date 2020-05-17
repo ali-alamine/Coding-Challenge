@@ -4,10 +4,17 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './Display_result.css';
 
-const Display_result = () => {
+const Display_result = (props) => {
+
+
+
     return (
         <div className='display-result'>
-            <div id="result"></div>
+            <div id="result">
+                <div className='content-result'>
+                    {props.result}
+                </div>
+            </div>
         </div>
     )
 }

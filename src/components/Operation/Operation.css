@@ -11,6 +11,6 @@
 }
 .operation .operation-type:hover{
     background-color: cornsilk;
-    
+    cursor: pointer;
     box-shadow: 0 0 5px black;
 }
