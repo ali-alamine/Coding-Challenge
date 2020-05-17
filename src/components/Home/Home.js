@@ -24,8 +24,9 @@ const Home = () => {
     const get_countries_status_summary = () =>{
 
         axios.get('https://api.covid19api.com/summary').then(
-
             response=>{
+                console.log('response')
+                console.log(response)
                 var request=response.data;
                 set_countries_list(request['Countries']);
                 set_global_total_confirmed(request['Global'].TotalConfirmed);
@@ -33,8 +34,8 @@ const Home = () => {
             },error =>{
                 console.log(error)
             }
-
         );
+
     };
 
     /* Show Loader on response success*/
