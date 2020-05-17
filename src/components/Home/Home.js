@@ -57,15 +57,25 @@ const Home = () => {
         set_selected_country_data(country_code);
     }
 
-    /* Searc by country name */
+    /* Search by country name */
+    const search_by_country_name = (search_query) => {
+        if(search_query.query==''){
+            get_countries_status_summary();
+        }
+
+        countries_list.map((el,index )=> {
+            return el.Country==search_query.query? set_countries_list([el]):''
+        });
+    }
+
 
     return (
             <div className='home-page'>
                 {show_spinner()}
                 {
-                    countries_list.length > 0 ? 
+                    countries_list.length > 0 ?
                         <div>
-                            <Global_search />
+                            <Global_search search_by_country_name={search_by_country_name}/>
                             <div className="global-total-confirmed" >
                                 <Row>
                                     <Col>
@@ -84,7 +94,7 @@ const Home = () => {
                                             <Row>
                                                 <Col>
                                                     <div onClick={() => select_country(el) } >
-                                                        <Item total_confirmed={el.TotalConfirmed} total_recovered={el.TotalRecovered} total_deaths={el.TotalDeaths} CountryCode={el.CountryCode} />
+                                                        <Item county_name={el.Country} total_confirmed={el.TotalConfirmed} total_recovered={el.TotalRecovered} total_deaths={el.TotalDeaths} CountryCode={el.CountryCode} />
                                                     </div>
                                                 </Col>
                                             </Row>

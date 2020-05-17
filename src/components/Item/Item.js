@@ -34,6 +34,9 @@ function Item(props){
                 <Flag code={props.CountryCode}/>
                 <div className={classes.details}>
                     <CardContent className={classes.content}>
+                    <Typography component="h4" variant="h4">
+                        {props.county_name}
+                    </Typography>
                     <Typography component="h6" variant="h6">
                       Total Confirmed: 
                         {props.total_confirmed}
