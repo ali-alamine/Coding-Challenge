@@ -10,7 +10,7 @@ import axios from 'axios';
 import ReactSpinner from 'react-bootstrap-spinner';
 import './Home.css';
 
-function Home(){
+const Home = () => {
 
     React.useEffect(()=>{
         get_countries_status_summary();
@@ -50,6 +50,12 @@ function Home(){
         )
     }
 
+    /* Handle Select Country */
+    const [selected_country_code,set_selected_country_code] = React.useState('');
+    const select_country = (country_code) => {
+        set_selected_country_code(country_code);
+    }
+
     return (
             <div className='home-page'>
                 {
@@ -74,7 +80,9 @@ function Home(){
                             return (
                                 <Row>
                                     <Col>
-                                        <Item totalConfirmed={el.TotalConfirmed} CountryCode={el.CountryCode} />
+                                        <div onClick={() =>select_country(el.CountryCode) } >
+                                            <Item totalConfirmed={el.TotalConfirmed} CountryCode={el.CountryCode} />
+                                        </div>
                                     </Col>
                                 </Row>
                             )
@@ -85,7 +93,7 @@ function Home(){
                     <Col>
                         <Row>
                             <Col>
-                                <Display_selected />
+                                <Display_selected CountryCode={selected_country_code}/>
                             </Col>
                         </Row>
                     </Col>
