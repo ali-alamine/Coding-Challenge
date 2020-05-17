@@ -89,6 +89,7 @@ const Home = () => {
                                 <Col>
                             {
                                 countries_list.map((el,index) => {
+                                    /* apply pagination */
                                     while(index < 5){
                                         return (
                                             <Row>

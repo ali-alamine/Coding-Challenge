@@ -1,0 +1,26 @@
+.display-result #result {
+  width: 200px;
+  height: 200px;
+  margin-left: 15%;
+  margin-top: 25%;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  border-radius: 100px;
+  border: solid black 1px;
+  box-shadow: 0 0 3px black;
+  
+}
+.display-result #result:hover{
+  box-shadow: 0 0 6px black;
+}
+
+.display-result{
+  text-align: center !important;
+}
+
+@media only screen and (max-width: 750px) {
+  .display-result #result {
+    margin-left: -20%;
+    margin-top: 25%;
+  }
+}
