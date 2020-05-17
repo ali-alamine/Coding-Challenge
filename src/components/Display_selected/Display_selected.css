@@ -1,0 +1,7 @@
+.selected-country{
+    border: solid rgb(146, 146, 146) 1px;
+    box-shadow: 0 0 3px black;
+    border-radius: 5px;
+    margin-top: 50px;
+    height: 100%;
+}

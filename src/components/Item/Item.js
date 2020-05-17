@@ -18,7 +18,10 @@ function Item(props){
         root: {
           display: 'flex',
           marginTop:50,
-          cursor:'pointer'
+          cursor:'pointer',
+          width:'100%'
+        },content: {
+          flex: '1 0 auto',
         }
     }));
     const classes = useStyles();
@@ -26,24 +29,22 @@ function Item(props){
 
     return (
         <div className='home-page'>
-            <Row>
-                <Col lg={6}>
-                    <Card className={classes.root}>
-                        <Flag code={props.CountryCode} height="120" />
-                        <div className={classes.details}>
-                            <CardContent className={classes.content}>
-                            <Typography component="h4" variant="h4">
-                              Total: 
-                               {props.totalConfirmed}
-                            </Typography>
-                            <Typography variant="subtitle1" color="textSecondary">
-                                Mac Miller
-                            </Typography>
-                            </CardContent>
-                        </div>
-                    </Card>
-                </Col>
-            </Row>
+          <div className='item'>
+            <Card className={classes.root}>
+                <Flag code={props.CountryCode}/>
+                <div className={classes.details}>
+                    <CardContent className={classes.content}>
+                    <Typography component="h4" variant="h4">
+                      Total: 
+                        {props.totalConfirmed}
+                    </Typography>
+                    <Typography variant="subtitle1" color="textSecondary">
+                        Mac Miller
+                    </Typography>
+                    </CardContent>
+                </div>
+            </Card>
+          </div>
         </div>
     )
 }

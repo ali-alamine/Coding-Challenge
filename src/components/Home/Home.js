@@ -1,48 +1,95 @@
 import React from 'react';
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import SearchIcon from '@material-ui/icons/Search';
 import Global_search from '../Global_search/Global_search';
+import Display_selected from '../Display_selected/Display_selected';
 import Item from '../Item/Item';
 import axios from 'axios';
-import ReactSpinner from 'react-bootstrap-spinner'
-import './Home.css'
+import ReactSpinner from 'react-bootstrap-spinner';
+import './Home.css';
+
 function Home(){
 
     React.useEffect(()=>{
-        get_status_summary();
+        get_countries_status_summary();
     },[]);
-
+    
     const [countries_list,set_countries_list] = React.useState([]);
-    const get_status_summary = () =>{
+
+    const [global_status,set_global_status] = React.useState([]);
+
+    /* Get list Summary */
+    const get_countries_status_summary = () =>{
+
         axios.get('https://api.covid19api.com/summary').then(
+
             response=>{
                 var request=response.data;
                 set_countries_list(request['Countries']);
+                set_global_status(request['Global']);
                 console.log(request['Countries'])
             },error =>{
                 console.log(error)
             }
+
         );
+    };
+
+    /* Show Loader on response success*/
+    const show_spinner = () => {
+        return (
+            <div Style={countries_list.length > 0 ? 'display:none':'display:block'}>
+                <Row >
+                    <Col></Col>
+                    <Col><ReactSpinner type="border" color="primary" size="5" /></Col>
+                    <Col></Col>
+                </Row>
+            </div>
+        )
     }
+
     return (
             <div className='home-page'>
-                <Global_search />
-                <div Style={countries_list.length > 0 ? 'display:none':'display:block'}>
-                    <Row >
-                        <Col></Col>
-                        <Col> <ReactSpinner type="border" color="primary" size="5" /></Col>
-                        <Col></Col>
-                    </Row>
-                </div>
+                {
+                    countries_list.length > 0 ? 
+                    <div >
+                        <Global_search />
+                        <Row>
+                            <Col>
+                                <span className='world-wide-label'>Global-Total Confirmed:</span>
+                                <span className='world-wide-status'>{global_status.NewConfirmed}</span>
+                            </Col>
+                        </Row>
+                    </div>
+                    :''
+                }
+                {show_spinner()}
+                <Row>
+                    <Col>
                 {
                     countries_list.map((el,index) => {
                         while(index < 5){
-                            return <Item totalConfirmed={el.TotalConfirmed} CountryCode={el.CountryCode} />
+                            return (
+                                <Row>
+                                    <Col>
+                                        <Item totalConfirmed={el.TotalConfirmed} CountryCode={el.CountryCode} />
+                                    </Col>
+                                </Row>
+                            )
                         }
                     })
                 }
+                    </Col>
+                    <Col>
+                        <Row>
+                            <Col>
+                                <Display_selected />
+                            </Col>
+                        </Row>
+                    </Col>
+                </Row>
             </div>
         )
 }
